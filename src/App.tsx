@@ -1,12 +1,16 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <header>
-        Sample apps
-      </header>
-    </div>
+    <>
+      <h2>Links</h2>
+      <ul>
+        <li>
+          <Link to="/dice">Dice</Link>
+        </li>
+      </ul>
+    </>
   );
 }
 
