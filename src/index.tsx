@@ -16,6 +16,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="dice" element={<Dice />} />
+          <Route path="*" element={<p>There's nothing here!</p>} />
         </Routes>
       </main>
     </BrowserRouter>
