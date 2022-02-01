@@ -23,7 +23,7 @@ function App() {
           href="https://freks.jp"
           className="no-underline hover:underline"
         >
-          <small>freks</small>
+          <small>Copyright freks</small>
         </a>
       </footer>
     </div>
