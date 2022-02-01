@@ -1,15 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Dice from "./components/pages/Dice";
+import Top from "./components/pages/Top";
 
 function App() {
   return (
     <>
-      <h2>Links</h2>
-      <ul>
-        <li>
-          <Link to="/dice">Dice</Link>
-        </li>
-      </ul>
+      <header>
+        <h1>Freks sample apps</h1>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Top />} />
+          <Route path="dice" element={<Dice />} />
+          <Route path="*" element={<p>There's nothing here!</p>} />
+        </Routes>
+      </main>
     </>
   );
 }
