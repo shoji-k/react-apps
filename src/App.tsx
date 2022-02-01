@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import Dice from "./components/pages/Dice";
-import Top from "./components/pages/Top";
+import DicePage from "./components/pages/dice";
+import TopPage from "./components/pages/top";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       </header>
       <main className="grow pb-2">
         <Routes>
-          <Route path="/" element={<Top />} />
-          <Route path="dice" element={<Dice />} />
+          <Route path="/" element={<TopPage />} />
+          <Route path="dice" element={<DicePage />} />
           <Route path="*" element={<p>There's nothing here!</p>} />
         </Routes>
       </main>

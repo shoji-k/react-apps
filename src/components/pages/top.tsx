@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "../atoms/Link";
 
-export default function Top() {
+export default function TopPage() {
   return (
     <>
       <h2>Links</h2>
