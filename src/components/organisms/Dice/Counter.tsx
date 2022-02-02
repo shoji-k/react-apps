@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 type CounterList = [number, number, number, number, number, number];
 

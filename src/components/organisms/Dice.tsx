@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { LoadingIcon } from "../atoms/LoadingIcon";
 import { DiceCounter } from "./Dice/Counter";
+import { DiceLog } from "./Dice/Log";
 
 type CounterList = [number, number, number, number, number, number];
 
@@ -52,14 +53,7 @@ export function Dice() {
         <DiceCounter countList={countList} />
       </div>
       <div className="pb-2">
-        <div className="pb-2">Log</div>
-        <div className="flex flex-wrap">
-          {logs.map((n, i) => (
-            <div key={i} className="border p-2 mr-2 mb-2 text-center">
-              {n}
-            </div>
-          ))}
-        </div>
+        <DiceLog logs={logs} />
       </div>
     </>
   );
