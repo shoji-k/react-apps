@@ -36,17 +36,19 @@ export function Dice() {
 
   return (
     <>
-      <div className="pb-2">
-        <button
-          className="rounded bg-teal-300 text-white p-8"
-          onClick={handleClick}
-        >
-          Tap
-        </button>
-      </div>
-      <div className="pb-8">
-        <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center">
-          {rolling ? <LoadingIcon /> : <span>{result}</span>}
+      <div className="">
+        <div className="pb-8 flex justify-center">
+          <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center">
+            {rolling ? <LoadingIcon /> : <span>{result}</span>}
+          </div>
+        </div>
+        <div className="pb-2">
+          <button
+            className="rounded bg-teal-300 text-white w-full h-24"
+            onClick={handleClick}
+          >
+            Tap
+          </button>
         </div>
       </div>
       <div className="pb-2">
