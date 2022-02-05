@@ -25,3 +25,13 @@ Install [Tailwind css](https://tailwindcss.com/docs/guides/create-react-app)
 rsync -rltuvzn ./build/ sample:/var/www/html
 # e.g. rsync -rltuvz ./build/ dev:/usr/share/nginx/freks.jp/app
 ```
+
+### Nginx config
+
+If you publish /app
+
+```
+location /app {
+  try_files $uri /app/index.html;
+}
+```
