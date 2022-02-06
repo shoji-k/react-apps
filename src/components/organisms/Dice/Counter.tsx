@@ -1,9 +1,7 @@
 import React from "react";
 
-type CounterList = [number, number, number, number, number, number];
-
 type Props = {
-  countList: CounterList;
+  countList: number[];
 };
 
 export const DiceCounter: React.FC<Props> = ({ countList }) => {

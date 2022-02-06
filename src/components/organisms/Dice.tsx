@@ -1,55 +1,34 @@
-import React, { useState } from "react";
-import { LoadingIcon } from "../atoms/LoadingIcon";
+import React, { useEffect, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
 import { DiceLog } from "./Dice/Log";
-
-type CounterList = [number, number, number, number, number, number];
+import { DicePlayground } from "./Dice/PlayGround";
 
 const max = 6;
 
-const getDiceNumber = () => {
-  return Math.floor(Math.random() * max) + 1;
-};
-
 export function Dice() {
-  const [rolling, setRolling] = useState(false);
-  const [result, setResult] = useState(0);
   const [logs, setLogs] = useState<number[]>([]);
-  const [countList, setCountList] = useState<CounterList>([0, 0, 0, 0, 0, 0]);
+  const [countList, setCountList] = useState<number[]>([]);
 
-  const handleClick = () => {
-    setRolling(true);
+  useEffect(() => {
+    const list = [...Array(max)].fill(0);
+    setCountList(list);
+  }, []);
 
-    const n = getDiceNumber();
-    setResult(n);
-    setLogs((prev) => [...prev, n]);
+  const setResult = (result: number) => {
+    setLogs((prev) => [...prev, result]);
     const newList = countList.map((c, i) => {
-      if (i === n - 1) {
+      if (i === result - 1) {
         return c + 1;
       }
       return c;
-    }) as CounterList;
+    });
     setCountList(newList);
-
-    setTimeout(() => setRolling(false), 300);
   };
 
   return (
     <>
-      <div className="">
-        <div className="pb-8 flex justify-center">
-          <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center">
-            {rolling ? <LoadingIcon /> : <span>{result}</span>}
-          </div>
-        </div>
-        <div className="pb-2">
-          <button
-            className="rounded bg-teal-300 text-white w-full h-24"
-            onClick={handleClick}
-          >
-            Tap
-          </button>
-        </div>
+      <div className="pb-8">
+        <DicePlayground max={max} setResult={setResult} />
       </div>
       <div className="pb-2">
         <DiceCounter countList={countList} />
