@@ -2,17 +2,27 @@ import React, { useEffect, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
 import { DiceLog } from "./Dice/Log";
 import { DicePlayground } from "./Dice/PlayGround";
+import { DiceSetting } from "./Dice/Setting";
 
-const max = 6;
+const initializeList = (max: number) => {
+  return [...Array(max)].fill(0);
+};
+
+export type DiceSettings = {
+  max: number;
+};
 
 export function Dice() {
   const [logs, setLogs] = useState<number[]>([]);
   const [countList, setCountList] = useState<number[]>([]);
+  const [settings, setSettings] = useState<DiceSettings>({
+    max: 6,
+  });
 
   useEffect(() => {
-    const list = [...Array(max)].fill(0);
+    const list = initializeList(settings.max);
     setCountList(list);
-  }, []);
+  }, [settings]);
 
   const setResult = (result: number) => {
     setLogs((prev) => [...prev, result]);
@@ -25,16 +35,33 @@ export function Dice() {
     setCountList(newList);
   };
 
+  const handleSetSettings = (values: DiceSettings) => {
+    setSettings(values);
+  };
+
+  const handleClearValues = () => {
+    setLogs([]);
+    const list = initializeList(settings.max);
+    setCountList(list);
+  };
+
   return (
     <>
       <div className="pb-8">
-        <DicePlayground max={max} setResult={setResult} />
+        <DicePlayground max={settings.max} setResult={setResult} />
       </div>
       <div className="pb-2">
-        <DiceCounter max={max} countList={countList} />
+        <DiceCounter max={settings.max} countList={countList} />
       </div>
       <div className="pb-2">
         <DiceLog logs={logs} />
+      </div>
+      <div className="pb-2">
+        <DiceSetting
+          settings={settings}
+          setSettings={handleSetSettings}
+          clearValues={handleClearValues}
+        />
       </div>
     </>
   );
