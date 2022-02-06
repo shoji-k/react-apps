@@ -31,7 +31,7 @@ export function Dice() {
         <DicePlayground max={max} setResult={setResult} />
       </div>
       <div className="pb-2">
-        <DiceCounter countList={countList} />
+        <DiceCounter max={max} countList={countList} />
       </div>
       <div className="pb-2">
         <DiceLog logs={logs} />

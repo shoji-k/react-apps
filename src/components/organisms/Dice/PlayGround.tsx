@@ -27,7 +27,7 @@ export const DicePlayground: React.FC<Props> = ({ max, setResult }) => {
   
   return (
     <>
-      <div className="pb-4 flex justify-center">
+      <div className="pt-8 pb-10 flex justify-center">
         <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center">
           {rolling ? <LoadingIcon /> : <span>{dice}</span>}
         </div>

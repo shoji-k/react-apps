@@ -1,10 +1,13 @@
 import React from "react";
 
 type Props = {
+  max: number;
   countList: number[];
 };
 
-export const DiceCounter: React.FC<Props> = ({ countList }) => {
+export const DiceCounter: React.FC<Props> = ({ max, countList }) => {
+  const indexes = [...Array(max)].map((_, i) => i);
+
   return (
     <>
       <div className="pb-2">Counter</div>
@@ -12,22 +15,20 @@ export const DiceCounter: React.FC<Props> = ({ countList }) => {
         <table className="table-auto border-collapse border border-slate-400">
           <thead>
             <tr>
-              <th className="border border-slate-300 px-2">1</th>
-              <th className="border border-slate-300 px-2">2</th>
-              <th className="border border-slate-300 px-2">3</th>
-              <th className="border border-slate-300 px-2">4</th>
-              <th className="border border-slate-300 px-2">5</th>
-              <th className="border border-slate-300 px-2">6</th>
+              {indexes.map((n) => (
+                <th key={n} className="border border-slate-300 px-2">
+                  {n + 1}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className="border border-slate-300 px-2">{countList[0]}</td>
-              <td className="border border-slate-300 px-2">{countList[1]}</td>
-              <td className="border border-slate-300 px-2">{countList[2]}</td>
-              <td className="border border-slate-300 px-2">{countList[3]}</td>
-              <td className="border border-slate-300 px-2">{countList[4]}</td>
-              <td className="border border-slate-300 px-2">{countList[5]}</td>
+              {indexes.map((n) => (
+                <td key={n} className="border border-slate-300 px-2">
+                  {countList[n]}
+                </td>
+              ))}
             </tr>
           </tbody>
         </table>
