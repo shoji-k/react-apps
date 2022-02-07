@@ -44,17 +44,19 @@ export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
   const makeSound = (type: "rolling" | "finish") => {
     if (!sound) return;
 
-    const source = type === "rolling" ? "/sound/rolling.mp3" : "/sound/jajan.mp3";
+    const source =
+      type === "rolling" ? "/sound/rolling.mp3" : "/sound/jajan.mp3";
     const audio = new Audio(source);
     audio.play();
   };
 
   return (
-    <>
+    <div className="relative">
+      <div className="absolute right-0">{sound ? "🔊" : "🔇"}</div>
       <div className="pt-8 pb-10 flex justify-center">
         <Dice rolling={rolling} dice={dice} />
       </div>
-      <div className="">
+      <div>
         <button
           className="rounded bg-teal-300 text-white w-full h-24"
           onClick={handleClick}
@@ -63,6 +65,6 @@ export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
           Tap
         </button>
       </div>
-    </>
+    </div>
   );
 };
