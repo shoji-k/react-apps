@@ -5,7 +5,7 @@ import TopPage from "./components/pages/top";
 
 function App() {
   return (
-    <div className="h-screen flex flex-col px-4 py-2">
+    <div className="container mx-auto h-screen flex flex-col px-4 py-2">
       <header className="grow-0 pb-2">
         <h1>
           <Link to="/">Freks sample apps</Link>
@@ -19,10 +19,7 @@ function App() {
         </Routes>
       </main>
       <footer className="grow-0">
-        <a
-          href="https://freks.jp"
-          className="no-underline hover:underline"
-        >
+        <a href="https://freks.jp" className="no-underline hover:underline">
           <small>Copyright freks</small>
         </a>
       </footer>
