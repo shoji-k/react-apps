@@ -12,11 +12,13 @@ export const DiceSetting: React.FC<Props> = ({
   setSettings,
   clearValues,
 }) => {
+  const [form, setForm] = useState(settings);
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
 
   const handleMax = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value, 10);
+    setForm({ max: value });
     if (value && Number.isInteger(value) && value > 0) {
       setSettings({ max: value });
       setError("");
@@ -40,8 +42,9 @@ export const DiceSetting: React.FC<Props> = ({
               <label className="pr-2">max</label>
               <input
                 type="number"
-                value={settings.max}
+                value={form.max}
                 onChange={handleMax}
+                min="1"
                 className="border p-2 text-right"
               />
             </div>
