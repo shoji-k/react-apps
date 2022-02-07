@@ -10,6 +10,7 @@ const initializeList = (max: number) => {
 
 export type DiceSettings = {
   max: number;
+  sound: boolean;
 };
 
 export function Dice() {
@@ -17,6 +18,7 @@ export function Dice() {
   const [countList, setCountList] = useState<number[]>([]);
   const [settings, setSettings] = useState<DiceSettings>({
     max: 6,
+    sound: true,
   });
 
   useEffect(() => {
@@ -48,7 +50,11 @@ export function Dice() {
   return (
     <>
       <div className="pb-8">
-        <DicePlayground max={settings.max} setResult={setResult} />
+        <DicePlayground
+          max={settings.max}
+          sound={settings.sound}
+          setResult={setResult}
+        />
       </div>
       <div className="pb-2">
         <DiceCounter max={settings.max} countList={countList} />

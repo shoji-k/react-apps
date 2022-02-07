@@ -3,6 +3,7 @@ import { LoadingIcon } from "../../atoms/LoadingIcon";
 
 type Props = {
   max: number;
+  sound: boolean;
   setResult: (score: number) => void;
 };
 
@@ -14,25 +15,38 @@ const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
       </div>
     </div>
   );
-};  
+};
 
-export const DicePlayground: React.FC<Props> = ({ max, setResult }) => {
+export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
   const [rolling, setRolling] = useState(false);
   const [dice, setDice] = useState(0);
 
   const handleClick = () => {
     setRolling(true);
+    makeSound("rolling");
 
     setTimeout(() => {
       setRolling(false);
       const n = getDiceNumber();
       setDice(n);
       setResult(n);
-    }, 300);
+
+      setTimeout(() => {
+        makeSound("finish");
+      }, 300);
+    }, 2000);
   };
 
   const getDiceNumber = () => {
     return Math.floor(Math.random() * max) + 1;
+  };
+
+  const makeSound = (type: "rolling" | "finish") => {
+    if (!sound) return;
+
+    const source = type === "rolling" ? "/sound/rolling.mp3" : "/sound/jajan.mp3";
+    const audio = new Audio(source);
+    audio.play();
   };
 
   return (
