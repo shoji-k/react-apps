@@ -41,6 +41,15 @@ export function Dice() {
     setSettings(values);
   };
 
+  const changeSound = () => {
+    setSettings((prev) => {
+      return {
+        ...prev,
+        sound: !prev.sound,
+      };
+    });
+  };
+
   const handleClearValues = () => {
     setLogs([]);
     const list = initializeList(settings.max);
@@ -54,6 +63,7 @@ export function Dice() {
           max={settings.max}
           sound={settings.sound}
           setResult={setResult}
+          changeSound={changeSound}
         />
       </div>
       <div className="pb-2">

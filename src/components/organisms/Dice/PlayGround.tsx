@@ -5,6 +5,7 @@ type Props = {
   max: number;
   sound: boolean;
   setResult: (score: number) => void;
+  changeSound: () => void;
 };
 
 const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
@@ -17,7 +18,12 @@ const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
   );
 };
 
-export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
+export const DicePlayground: React.FC<Props> = ({
+  max,
+  sound,
+  setResult,
+  changeSound,
+}) => {
   const [rolling, setRolling] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -50,9 +56,15 @@ export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
     audio.play();
   };
 
+  const handleSound = () => {
+    changeSound();
+  };
+
   return (
     <div className="relative">
-      <div className="absolute right-0">{sound ? "🔊" : "🔇"}</div>
+      <div className="absolute right-0" onClick={handleSound}>
+        {sound ? "🔊" : "🔇"}
+      </div>
       <div className="pt-8 pb-10 flex justify-center">
         <Dice rolling={rolling} dice={dice} />
       </div>
