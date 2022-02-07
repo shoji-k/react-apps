@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 type Props = {
-  max: number;
   countList: number[];
 };
 
@@ -12,7 +11,8 @@ const One = ({ roll, count }: { roll: number; count: number }) => (
   </div>
 );
 
-export const DiceCounter: React.FC<Props> = ({ max, countList }) => {
+export const DiceCounter: React.FC<Props> = React.memo(({ countList }) => {
+  console.log("list");
   const [show, setShow] = useState(false);
 
   return (
@@ -34,4 +34,4 @@ export const DiceCounter: React.FC<Props> = ({ max, countList }) => {
       )}
     </>
   );
-};
+});

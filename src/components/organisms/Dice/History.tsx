@@ -4,7 +4,7 @@ type Props = {
   logs: number[];
 };
 
-export const DiceHistory: React.FC<Props> = ({ logs }) => {
+export const DiceHistory: React.FC<Props> = React.memo(({ logs }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ export const DiceHistory: React.FC<Props> = ({ logs }) => {
         className="pb-2 text-teal-500 cursor-pointer"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? "Hide Log" : "Show Log"}
+        {show ? "Hide History" : "Show History"}
       </div>
       {show && (
         <div className="flex flex-wrap">
@@ -27,4 +27,4 @@ export const DiceHistory: React.FC<Props> = ({ logs }) => {
       )}
     </>
   );
-};
+});

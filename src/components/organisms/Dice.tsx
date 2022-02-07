@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
 import { DiceHistory } from "./Dice/History";
 import { DicePlayground } from "./Dice/PlayGround";
@@ -24,37 +24,40 @@ export function Dice() {
   useEffect(() => {
     const list = initializeList(settings.max);
     setCountList(list);
-  }, [settings]);
+  }, [settings.max]);
 
-  const setResult = (result: number) => {
-    setLogs((prev) => [...prev, result]);
-    const newList = countList.map((c, i) => {
-      if (i === result - 1) {
-        return c + 1;
-      }
-      return c;
-    });
-    setCountList(newList);
-  };
+  const setResult = useCallback(
+    (result: number) => {
+      setLogs((prev) => [...prev, result]);
+      const newList = countList.map((c, i) => {
+        if (i === result - 1) {
+          return c + 1;
+        }
+        return c;
+      });
+      setCountList(newList);
+    },
+    [countList]
+  );
 
-  const handleSetSettings = (values: DiceSettings) => {
+  const handleSetSettings = useCallback((values: DiceSettings) => {
     setSettings(values);
-  };
+  }, []);
 
-  const changeSound = () => {
+  const changeSound = useCallback(() => {
     setSettings((prev) => {
       return {
         ...prev,
         sound: !prev.sound,
       };
     });
-  };
+  }, []);
 
-  const handleClearValues = () => {
+  const handleClearValues = useCallback(() => {
     setLogs([]);
     const list = initializeList(settings.max);
     setCountList(list);
-  };
+  }, [settings.max]);
 
   return (
     <>
@@ -67,7 +70,7 @@ export function Dice() {
         />
       </div>
       <div className="pb-2">
-        <DiceCounter max={settings.max} countList={countList} />
+        <DiceCounter countList={countList} />
       </div>
       <div className="pb-2">
         <DiceHistory logs={logs} />
