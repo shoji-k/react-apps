@@ -19,7 +19,7 @@ const defaultSettings = {
 };
 
 export function Dice() {
-  const [logs, setLogs] = useState<number[]>([]);
+  const [histories, setHistories] = useState<number[]>([]);
   const [countList, setCountList] = useState<number[]>([]);
   const [settings, setSettings] = useState<DiceSettings>(defaultSettings);
 
@@ -41,7 +41,7 @@ export function Dice() {
 
   const setResult = useCallback(
     (result: number) => {
-      setLogs((prev) => [...prev, result]);
+      setHistories((prev) => [...prev, result]);
       const newList = countList.map((c, i) => {
         if (i === result - 1) {
           return c + 1;
@@ -68,7 +68,7 @@ export function Dice() {
   }, [settings]);
 
   const handleClearValues = useCallback(() => {
-    setLogs([]);
+    setHistories([]);
     const list = initializeList(settings.max);
     setCountList(list);
   }, [settings.max]);
@@ -87,7 +87,7 @@ export function Dice() {
         <DiceCounter countList={countList} />
       </div>
       <div className="pb-2">
-        <DiceHistory logs={logs} />
+        <DiceHistory histories={histories} />
       </div>
       <div className="pb-2">
         <DiceSetting

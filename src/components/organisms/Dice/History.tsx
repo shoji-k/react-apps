@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 type Props = {
-  logs: number[];
+  histories: number[];
 };
 
-export const DiceHistory: React.FC<Props> = React.memo(({ logs }) => {
+export const DiceHistory: React.FC<Props> = React.memo(({ histories }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -17,12 +17,12 @@ export const DiceHistory: React.FC<Props> = React.memo(({ logs }) => {
       </div>
       {show && (
         <div className="flex flex-wrap">
-          {logs.map((n, i) => (
+          {histories.map((n, i) => (
             <div key={i} className="border p-2 mr-2 mb-2 text-center">
               {n}
             </div>
           ))}
-          {logs.length === 0 && <p>(none)</p>}
+          {histories.length === 0 && <p>(none)</p>}
         </div>
       )}
     </>
