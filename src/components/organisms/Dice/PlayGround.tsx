@@ -6,6 +6,16 @@ type Props = {
   setResult: (score: number) => void;
 };
 
+const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
+  return (
+    <div className={rolling ? "animate-spin" : ""}>
+      <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center text-lg">
+        {rolling ? <LoadingIcon /> : <span>{dice}</span>}
+      </div>
+    </div>
+  );
+};  
+
 export const DicePlayground: React.FC<Props> = ({ max, setResult }) => {
   const [rolling, setRolling] = useState(false);
   const [dice, setDice] = useState(0);
@@ -24,13 +34,11 @@ export const DicePlayground: React.FC<Props> = ({ max, setResult }) => {
   const getDiceNumber = () => {
     return Math.floor(Math.random() * max) + 1;
   };
-  
+
   return (
     <>
       <div className="pt-8 pb-10 flex justify-center">
-        <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center">
-          {rolling ? <LoadingIcon /> : <span>{dice}</span>}
-        </div>
+        <Dice rolling={rolling} dice={dice} />
       </div>
       <div className="">
         <button
