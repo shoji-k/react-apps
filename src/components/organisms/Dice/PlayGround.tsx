@@ -58,6 +58,7 @@ export const DicePlayground: React.FC<Props> = ({ max, sound, setResult }) => {
         <button
           className="rounded bg-teal-300 text-white w-full h-24"
           onClick={handleClick}
+          disabled={rolling}
         >
           Tap
         </button>
