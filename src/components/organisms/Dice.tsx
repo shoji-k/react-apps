@@ -13,13 +13,26 @@ export type DiceSettings = {
   sound: boolean;
 };
 
+const defaultSettings = {
+  max: 6,
+  sound: true,
+};
+
 export function Dice() {
   const [logs, setLogs] = useState<number[]>([]);
   const [countList, setCountList] = useState<number[]>([]);
-  const [settings, setSettings] = useState<DiceSettings>({
-    max: 6,
-    sound: true,
-  });
+  const [settings, setSettings] = useState<DiceSettings>(defaultSettings);
+
+  useEffect(() => {
+    const settings = localStorage.getItem("settings");
+    if (settings) {
+      const values = JSON.parse(settings);
+      setSettings({
+        ...defaultSettings,
+        ...values,
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const list = initializeList(settings.max);
@@ -42,16 +55,17 @@ export function Dice() {
 
   const handleSetSettings = useCallback((values: DiceSettings) => {
     setSettings(values);
+    localStorage.setItem("settings", JSON.stringify(values));
   }, []);
 
   const changeSound = useCallback(() => {
-    setSettings((prev) => {
-      return {
-        ...prev,
-        sound: !prev.sound,
-      };
-    });
-  }, []);
+    const values = {
+      ...settings,
+      sound: !settings.sound,
+    };
+    setSettings(values);
+    localStorage.setItem("settings", JSON.stringify(values));
+  }, [settings]);
 
   const handleClearValues = useCallback(() => {
     setLogs([]);

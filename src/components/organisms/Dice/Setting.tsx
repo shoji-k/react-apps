@@ -19,7 +19,8 @@ export const DiceSetting: React.FC<Props> = React.memo(
       const value = parseInt(e.target.value, 10);
       setForm({ max: value });
       if (value && Number.isInteger(value) && value > 0) {
-        setSettings({ ...settings, max: value });
+        const updated = { ...settings, max: value };
+        setSettings(updated);
         setError("");
       } else {
         setError("Input valid number");
@@ -27,7 +28,8 @@ export const DiceSetting: React.FC<Props> = React.memo(
     };
 
     const handleSound = (e: React.MouseEvent<HTMLInputElement>) => {
-      setSettings({ ...settings, sound: e.currentTarget.value === "on" });
+      const updated = { ...settings, sound: e.currentTarget.value === "on" };
+      setSettings(updated);
     };
 
     return (
