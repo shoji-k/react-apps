@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
-import { DiceLog } from "./Dice/Log";
+import { DiceHistory } from "./Dice/History";
 import { DicePlayground } from "./Dice/PlayGround";
 import { DiceSetting } from "./Dice/Setting";
 
@@ -54,7 +54,7 @@ export function Dice() {
         <DiceCounter max={settings.max} countList={countList} />
       </div>
       <div className="pb-2">
-        <DiceLog logs={logs} />
+        <DiceHistory logs={logs} />
       </div>
       <div className="pb-2">
         <DiceSetting

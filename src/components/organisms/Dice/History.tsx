@@ -4,7 +4,7 @@ type Props = {
   logs: number[];
 };
 
-export const DiceLog: React.FC<Props> = ({ logs }) => {
+export const DiceHistory: React.FC<Props> = ({ logs }) => {
   const [show, setShow] = useState(false);
 
   return (
