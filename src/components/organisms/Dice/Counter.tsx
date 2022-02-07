@@ -12,7 +12,6 @@ const One = ({ roll, count }: { roll: number; count: number }) => (
 );
 
 export const DiceCounter: React.FC<Props> = React.memo(({ countList }) => {
-  console.log("list");
   const [show, setShow] = useState(false);
 
   return (
