@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { publicUrl } from "../../../lib/common";
 import { LoadingIcon } from "../../atoms/LoadingIcon";
 
 type Props = {
@@ -51,7 +52,9 @@ export const DicePlayground: React.FC<Props> = ({
     if (!sound) return;
 
     const source =
-      type === "rolling" ? "/sound/rolling.mp3" : "/sound/jajan.mp3";
+      type === "rolling"
+        ? `${publicUrl}/sound/rolling.mp3`
+        : `${publicUrl}/sound/jajan.mp3`;
     const audio = new Audio(source);
     audio.play();
   };
