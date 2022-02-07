@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 type Props = {
   max: number;
   countList: number[];
 };
 
+const One = ({ roll, count }: { roll: number; count: number }) => (
+  <div className="flex flex-col mb-2">
+    <div className="border text-center px-2">{roll}</div>
+    <div className="border text-right px-2">{count}</div>
+  </div>
+);
+
 export const DiceCounter: React.FC<Props> = ({ max, countList }) => {
   const [show, setShow] = useState(false);
-
-  const indexes = [...Array(max)].map((_, i) => i);
 
   return (
     <>
@@ -20,26 +25,11 @@ export const DiceCounter: React.FC<Props> = ({ max, countList }) => {
       </div>
       {show && (
         <div>
-          <table className="table-auto border-collapse border border-slate-400">
-            <thead>
-              <tr>
-                {indexes.map((n) => (
-                  <th key={n} className="border border-slate-300 px-2">
-                    {n + 1}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {indexes.map((n) => (
-                  <td key={n} className="border border-slate-300 px-2">
-                    {countList[n]}
-                  </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
+          <div className="flex flex-wrap">
+            {countList.map((n, i) => (
+              <One key={i} roll={i + 1} count={n} />
+            ))}
+          </div>
         </div>
       )}
     </>
