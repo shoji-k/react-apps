@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
-import { DiceHistory } from "./Dice/History";
+import { DiceHistory, Handler } from "./Dice/History";
 import { DicePlayground } from "./Dice/PlayGround";
 import { DiceSetting } from "./Dice/Setting";
 
@@ -19,7 +19,8 @@ const defaultSettings = {
 };
 
 export function Dice() {
-  const [histories, setHistories] = useState<number[]>([]);
+  const historyRef = useRef({} as Handler);
+
   const [countList, setCountList] = useState<number[]>([]);
   const [settings, setSettings] = useState<DiceSettings>(defaultSettings);
 
@@ -41,7 +42,7 @@ export function Dice() {
 
   const setResult = useCallback(
     (result: number) => {
-      setHistories((prev) => [...prev, result]);
+      historyRef.current.setValue(result);
       const newList = countList.map((c, i) => {
         if (i === result - 1) {
           return c + 1;
@@ -68,9 +69,9 @@ export function Dice() {
   }, [settings]);
 
   const handleClearValues = useCallback(() => {
-    setHistories([]);
     const list = initializeList(settings.max);
     setCountList(list);
+    historyRef.current.clearValues();
   }, [settings.max]);
 
   return (
@@ -87,7 +88,7 @@ export function Dice() {
         <DiceCounter countList={countList} />
       </div>
       <div className="pb-2">
-        <DiceHistory histories={histories} />
+        <DiceHistory ref={historyRef} />
       </div>
       <div className="pb-2">
         <DiceSetting

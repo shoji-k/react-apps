@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
-type Props = {
-  histories: number[];
-};
+export interface Handler {
+  setValue(v: number): void;
+  clearValues(): void;
+}
 
-export const DiceHistory: React.FC<Props> = React.memo(({ histories }) => {
+export const DiceHistory = forwardRef<Handler>((_props, ref) => {
+  const [histories, setHistories] = useState<number[]>([]);
   const [show, setShow] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    setValue(v: number) {
+      setHistories((prev) => [...prev, v]);
+    },
+    clearValues() {
+      setHistories([]);
+    },
+  }));
 
   return (
     <>
