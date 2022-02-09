@@ -1,4 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useSettings,
+  useUpdateSettings,
+} from "../../lib/context/SettingContext";
 import { DiceCounter } from "./Dice/Counter";
 import { DiceHistory, Handler } from "./Dice/History";
 import { DicePlayground } from "./Dice/PlayGround";
@@ -13,27 +17,13 @@ export type DiceSettings = {
   sound: boolean;
 };
 
-const defaultSettings = {
-  max: 6,
-  sound: true,
-};
-
 export function Dice() {
   const historyRef = useRef({} as Handler);
 
-  const [countList, setCountList] = useState<number[]>([]);
-  const [settings, setSettings] = useState<DiceSettings>(defaultSettings);
+  const settings = useSettings();
+  const updateSettings = useUpdateSettings();
 
-  useEffect(() => {
-    const settings = localStorage.getItem("settings");
-    if (settings) {
-      const values = JSON.parse(settings);
-      setSettings({
-        ...defaultSettings,
-        ...values,
-      });
-    }
-  }, []);
+  const [countList, setCountList] = useState<number[]>([]);
 
   useEffect(() => {
     const list = initializeList(settings.max);
@@ -54,19 +44,9 @@ export function Dice() {
     [countList]
   );
 
-  const handleSetSettings = useCallback((values: DiceSettings) => {
-    setSettings(values);
-    localStorage.setItem("settings", JSON.stringify(values));
-  }, []);
-
   const changeSound = useCallback(() => {
-    const values = {
-      ...settings,
-      sound: !settings.sound,
-    };
-    setSettings(values);
-    localStorage.setItem("settings", JSON.stringify(values));
-  }, [settings]);
+    updateSettings({ sound: !settings.sound });
+  }, [settings, updateSettings]);
 
   const handleClearValues = useCallback(() => {
     const list = initializeList(settings.max);
@@ -77,12 +57,7 @@ export function Dice() {
   return (
     <>
       <div className="pb-8">
-        <DicePlayground
-          max={settings.max}
-          sound={settings.sound}
-          setResult={setResult}
-          changeSound={changeSound}
-        />
+        <DicePlayground setResult={setResult} changeSound={changeSound} />
       </div>
       <div className="pb-2">
         <DiceCounter countList={countList} />
@@ -91,11 +66,7 @@ export function Dice() {
         <DiceHistory ref={historyRef} />
       </div>
       <div className="pb-2">
-        <DiceSetting
-          settings={settings}
-          setSettings={handleSetSettings}
-          clearValues={handleClearValues}
-        />
+        <DiceSetting clearValues={handleClearValues} />
       </div>
     </>
   );
