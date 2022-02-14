@@ -33,7 +33,7 @@ export const SettingContextProvider: React.FC = ({ children }) => {
         ...values,
       });
     }
-    setLoading(false);
+    setTimeout(() => setLoading(false), 1000); // prepare delay
   }, []);
 
   const update = (values: Partial<SettingsType>) => {
