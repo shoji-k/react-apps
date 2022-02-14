@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
-type Props = {
-  logs: number[];
-};
+export interface Handler {
+  setValue(v: number): void;
+  clearValues(): void;
+}
 
-export const DiceHistory: React.FC<Props> = React.memo(({ logs }) => {
+export const DiceHistory = forwardRef<Handler>((_props, ref) => {
+  const [histories, setHistories] = useState<number[]>([]);
   const [show, setShow] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    setValue(v: number) {
+      setHistories((prev) => [...prev, v]);
+    },
+    clearValues() {
+      setHistories([]);
+    },
+  }));
 
   return (
     <>
@@ -13,16 +24,16 @@ export const DiceHistory: React.FC<Props> = React.memo(({ logs }) => {
         className="pb-2 text-teal-500 cursor-pointer"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? "Hide History" : "Show History"}
+        {show ? "History" : "Show History"}
       </div>
       {show && (
         <div className="flex flex-wrap">
-          {logs.map((n, i) => (
+          {histories.map((n, i) => (
             <div key={i} className="border p-2 mr-2 mb-2 text-center">
               {n}
             </div>
           ))}
-          {logs.length === 0 && <p>(none)</p>}
+          {histories.length === 0 && <p>(none)</p>}
         </div>
       )}
     </>

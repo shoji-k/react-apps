@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { publicUrl } from "../../../lib/common";
+import { useSettings } from "../../../lib/context/SettingContext";
 import { LoadingIcon } from "../../atoms/LoadingIcon";
 
 type Props = {
-  max: number;
-  sound: boolean;
   setResult: (score: number) => void;
   changeSound: () => void;
 };
@@ -19,12 +18,10 @@ const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
   );
 };
 
-export const DicePlayground: React.FC<Props> = ({
-  max,
-  sound,
-  setResult,
-  changeSound,
-}) => {
+export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
+  const settings = useSettings();
+  const { max, sound } = settings;
+
   const [rolling, setRolling] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -65,6 +62,9 @@ export const DicePlayground: React.FC<Props> = ({
 
   return (
     <div className="relative">
+      <div className="absolute left-0 text-xs">
+        1 ~ {max}
+      </div>
       <div className="absolute right-0" onClick={handleSound}>
         {sound ? "🔊" : "🔇"}
       </div>
