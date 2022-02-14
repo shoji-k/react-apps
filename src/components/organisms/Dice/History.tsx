@@ -24,7 +24,7 @@ export const DiceHistory = forwardRef<Handler>((_props, ref) => {
         className="pb-2 text-teal-500 cursor-pointer"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? "Hide History" : "Show History"}
+        {show ? "History" : "Show History"}
       </div>
       {show && (
         <div className="flex flex-wrap">

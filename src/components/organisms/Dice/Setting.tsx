@@ -42,7 +42,7 @@ export const DiceSetting: React.FC<Props> = React.memo(({ clearValues }) => {
         className="pb-2 text-teal-500 cursor-pointer"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? "Hide Settings" : "Show Settings"}
+        {show ? "Settings" : "Show Settings"}
       </div>
       {show && (
         <>

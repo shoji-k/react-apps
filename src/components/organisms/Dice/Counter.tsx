@@ -20,7 +20,7 @@ export const DiceCounter: React.FC<Props> = React.memo(({ countList }) => {
         className="pb-2 text-teal-500 cursor-pointer"
         onClick={() => setShow((prev) => !prev)}
       >
-        {show ? "Hide Counter" : "Show Counter"}
+        {show ? "Counter" : "Show Counter"}
       </div>
       {show && (
         <div>
