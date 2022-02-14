@@ -62,6 +62,9 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
   return (
     <div className="relative">
+      <div className="absolute left-0 text-xs">
+        1 ~ {max}
+      </div>
       <div className="absolute right-0" onClick={handleSound}>
         {sound ? "🔊" : "🔇"}
       </div>
