@@ -2,8 +2,11 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import DicePage from "./components/pages/dice";
 import TopPage from "./components/pages/top";
+import { useTracking } from "./lib/hooks/useTracking";
 
 function App() {
+  useTracking();
+
   return (
     <div className="container mx-auto h-screen flex flex-col px-4 py-2">
       <header className="grow-0 pb-2">
