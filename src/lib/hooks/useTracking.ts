@@ -21,7 +21,6 @@ export function useTracking() {
 //   const location = useLocation();
 
   useEffect(() => {
-    console.log(process.env);
     if (GA_ID) {
       initializeGA(GA_ID, !isProduction);
     }
