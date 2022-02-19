@@ -1,4 +1,4 @@
-## Pre requirement
+## Pre requirement for production
 
 ```bash
 cp .env.production.sample .env.production

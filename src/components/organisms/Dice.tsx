@@ -55,8 +55,8 @@ export function Dice() {
   }, [settings.max]);
 
   return (
-    <>
-      <div className="pb-8">
+    <div className="flex flex-col h-full">
+      <div className="pb-8 grow">
         <DicePlayground setResult={setResult} changeSound={changeSound} />
       </div>
       <div className="pb-2">
@@ -68,6 +68,6 @@ export function Dice() {
       <div className="pb-2">
         <DiceSetting clearValues={handleClearValues} />
       </div>
-    </>
+    </div>
   );
 }

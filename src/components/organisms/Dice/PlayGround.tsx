@@ -61,14 +61,14 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-full flex flex-col">
       <div className="absolute left-0 text-xs">
         1 ~ {max}
       </div>
       <div className="absolute right-0" onClick={handleSound}>
         {sound ? "🔊" : "🔇"}
       </div>
-      <div className="pt-8 pb-10 flex justify-center">
+      <div className="pt-8 pb-10 grow flex justify-center items-center">
         <Dice rolling={rolling} dice={dice} />
       </div>
       <div>
