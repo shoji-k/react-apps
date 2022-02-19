@@ -24,7 +24,7 @@ export function useTracking() {
     if (GA_ID) {
       initializeGA(GA_ID, !isProduction);
     }
-  }, [GA_ID]);
+  }, [GA_ID, isProduction]);
   // // UA needs below, GA4 does not need below.
   //   useEffect(() => {
   //     if (GA_ID) {
