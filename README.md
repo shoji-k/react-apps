@@ -22,6 +22,7 @@ Install [Tailwind css](https://tailwindcss.com/docs/guides/create-react-app)
 ## Deploy
 
 ```
+npm run build
 rsync -rltuvzn ./build/ sample:/var/www/html
 # e.g. rsync -rltuvz ./build/ dev:/usr/share/nginx/freks.jp/app
 ```
