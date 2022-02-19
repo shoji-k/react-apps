@@ -11,7 +11,7 @@ function App() {
     <div className="container mx-auto h-screen flex flex-col px-4 py-2">
       <header className="grow-0 pb-2">
         <h1>
-          <Link to="/">Freks sample apps</Link>
+          <Link to="/">Freks apps</Link>
         </h1>
       </header>
       <main className="grow pb-2">

@@ -46,7 +46,7 @@ export const DiceSetting: React.FC<Props> = React.memo(({ clearValues }) => {
       </div>
       {show && (
         <>
-          <div className="pb-4  ">
+          <div className="pb-4">
             <div>
               <label htmlFor="max" className="pr-2">
                 max
