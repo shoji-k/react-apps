@@ -45,15 +45,18 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
     return Math.floor(Math.random() * max) + 1;
   };
 
+  const rollingAudio = new Audio(`${publicUrl}/sound/rolling.mp3`);
+  const finishAudio = new Audio(`${publicUrl}/sound/jajan.mp3`);
+
   const makeSound = (type: "rolling" | "finish") => {
     if (!sound) return;
 
-    const source =
-      type === "rolling"
-        ? `${publicUrl}/sound/rolling.mp3`
-        : `${publicUrl}/sound/jajan.mp3`;
-    const audio = new Audio(source);
-    audio.play();
+    if (type === "rolling") {
+      rollingAudio.play();
+    }
+    if (type === "finish") {
+      finishAudio.play();
+    }
   };
 
   const handleSound = () => {
@@ -62,9 +65,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
   return (
     <div className="relative h-full flex flex-col">
-      <div className="absolute left-0 text-xs">
-        1 ~ {max}
-      </div>
+      <div className="absolute left-0 text-xs">1 ~ {max}</div>
       <div className="absolute right-0" onClick={handleSound}>
         {sound ? "🔊" : "🔇"}
       </div>
