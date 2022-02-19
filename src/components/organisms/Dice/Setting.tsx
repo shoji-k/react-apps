@@ -90,7 +90,6 @@ export const DiceSetting: React.FC<Props> = React.memo(({ clearValues }) => {
                 onClick={handleSound}
               />
             </div>
-            {error && <div className="text-orange-500">{error}</div>}
           </div>
           <div className="">
             <button
