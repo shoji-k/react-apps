@@ -9,9 +9,11 @@ export default function DicePage() {
 
   return (
     <SettingContextProvider>
-      <h2 className="pb-2 text-lg font-semibold">Dice</h2>
-      <div className="pb-2">
-        <Dice />
+      <div className="flex flex-col h-full">
+        <h2 className="pb-2 text-lg font-semibold">Dice</h2>
+        <div className="pb-2 grow">
+          <Dice />
+        </div>
       </div>
     </SettingContextProvider>
   );
