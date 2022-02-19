@@ -10,8 +10,15 @@ type Props = {
 
 const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
   return (
-    <div className={rolling ? "animate-spin" : ""}>
-      <div className="flex justify-center items-center border-collapse border border-slate-400 w-24 h-24 text-center text-lg">
+    <div
+      className={`flex justify-center items-center h-full w-full ${
+        rolling && "animate-spin"
+      }`}
+    >
+      <div
+        className="flex justify-center items-center border-collapse border border-slate-400 text-center"
+        style={{ height: "80%", aspectRatio: "1 / 1", fontSize: '8vh' }}
+      >
         {rolling ? <LoadingIcon /> : <span>{dice}</span>}
       </div>
     </div>
@@ -27,6 +34,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
   const handleClick = () => {
     setRolling(true);
+    document.body.style.overflow = 'hidden';
     makeSound("rolling");
 
     setTimeout(() => {
@@ -37,6 +45,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
       setTimeout(() => {
         makeSound("finish");
+        document.body.style.overflow = 'visible';
       }, 300);
     }, 2000);
   };
@@ -55,6 +64,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
       rollingAudio.play();
     }
     if (type === "finish") {
+      rollingAudio.pause();
       finishAudio.play();
     }
   };

@@ -2,7 +2,7 @@ import React from "react";
 
 export const LoadingIcon: React.FC = () => (
   <svg
-    className="animate-spin h-5 w-5 text-teal-500"
+    className="animate-spin h-10 w-10 text-teal-500"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
