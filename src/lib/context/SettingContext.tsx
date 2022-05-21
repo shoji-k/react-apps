@@ -18,7 +18,11 @@ const initialContext: {
 
 const SettingContext = React.createContext(initialContext);
 
-export const SettingContextProvider: React.FC = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+}
+
+export const SettingContextProvider: React.FC<Props> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [settings, setSettings] = useState<SettingsType>(
     initialContext.settings
