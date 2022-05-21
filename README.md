@@ -19,6 +19,14 @@ This started with `npx create-react-app react-apps --template typescript`. [Refe
 Install [React Router](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 Install [Tailwind css](https://tailwindcss.com/docs/guides/create-react-app)
 
+```
+NODE_ENV=production npm install
+// or
+npm install --production
+```
+
+で devDependencies がインストールされない
+
 ## Deploy
 
 ```
