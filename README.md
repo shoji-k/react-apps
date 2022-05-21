@@ -14,7 +14,8 @@ serve -s build
 
 ## Log
 
-This started with `npx create-react-app react-apps --template typescript`. [Reference]([https://create-react-app.dev/docs/adding-typescript/ Adding TypeScript | Create React App])
+This started with `npx create-react-app react-apps --template typescript`.  
+Reference: [Adding TypeScript | Create React App](https://create-react-app.dev/docs/adding-typescript/)
 
 Install [React Router](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 Install [Tailwind css](https://tailwindcss.com/docs/guides/create-react-app)
