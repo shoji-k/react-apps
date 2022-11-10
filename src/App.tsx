@@ -1,5 +1,5 @@
-import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import ApiPage from "./components/pages/api";
 import DicePage from "./components/pages/dice";
 import TopPage from "./components/pages/top";
 import { useTracking } from "./lib/hooks/useTracking";
@@ -17,6 +17,7 @@ function App() {
       <main className="grow pb-2">
         <Routes>
           <Route path="/" element={<TopPage />} />
+          <Route path="api" element={<ApiPage />} />
           <Route path="dice" element={<DicePage />} />
           <Route path="*" element={<p>There's nothing here!</p>} />
         </Routes>
