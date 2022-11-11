@@ -9,6 +9,9 @@ export default function TopPage() {
         <li>
           <Link to="/dice">Dice</Link>
         </li>
+        <li>
+          <Link to="/api">Api sandbox</Link>
+        </li>
       </ul>
     </>
   );
