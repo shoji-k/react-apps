@@ -1,3 +1,15 @@
+import { useEffect, useState } from "react";
+
 export function Api() {
-  return <div>api sandbox</div>;
+  const [ip, setIp] = useState("");
+
+  useEffect(() => {
+    setIp("");
+  }, []);
+
+  return (
+    <div>
+      <div>ip: {ip}</div>
+    </div>
+  );
 }
