@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { getIp } from "../../api/httpbin";
 
 export function Api() {
   const [ip, setIp] = useState("");
@@ -8,7 +8,7 @@ export function Api() {
   useEffect(() => {
     (async function () {
       try {
-        const result = await axios.get("http://httpbin.org/ip");
+        const result = await getIp();
         setIp(result.data.origin);
       } catch (error) {
         console.log(error);
