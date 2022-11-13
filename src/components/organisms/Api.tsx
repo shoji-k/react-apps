@@ -6,15 +6,22 @@ export function Api() {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let ignore = false;
     (async function () {
       try {
         const result = await getIp();
-        setIp(result.data.origin);
+        if (!ignore) {
+          setIp(result.data.origin);
+        }
       } catch (error) {
-        console.log(error);
+        console.error(error);
         setError("error");
       }
     })();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return (

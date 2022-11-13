@@ -1,5 +1,5 @@
-import axios from "axios";
+import client from "../lib/client";
 
 export const getIp = () => {
-  return axios.get("http://httpbin.org/ip");
+  return client.get("http://httpbin.org/ip");
 };
