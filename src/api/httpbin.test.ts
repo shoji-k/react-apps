@@ -1,8 +1,8 @@
 import axios from "axios";
-import client from "../lib/client";
+import client from "lib/client";
 import { getIp } from "./httpbin";
 
-jest.mock("../lib/client");
+jest.mock("lib/client");
 const mockedClient = client as jest.Mocked<typeof axios>;
 
 test("fetch ip", async () => {

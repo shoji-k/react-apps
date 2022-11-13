@@ -1,5 +1,5 @@
+import { getIp } from "api/httpbin";
 import { useEffect, useState } from "react";
-import { getIp } from "../../api/httpbin";
 
 export function Api() {
   const [ip, setIp] = useState("");

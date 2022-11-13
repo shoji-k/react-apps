@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Dice } from "../organisms/Dice";
-import { SettingContextProvider } from "../../lib/context/SettingContext";
+import { Dice } from "components/organisms/Dice";
+import { SettingContextProvider } from "lib/context/SettingContext";
+import { useEffect } from "react";
 
 export default function DicePage() {
   useEffect(() => {

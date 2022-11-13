@@ -1,7 +1,7 @@
+import { LoadingIcon } from "components/atoms/LoadingIcon";
+import { publicUrl } from "lib/common";
+import { useSettings } from "lib/context/SettingContext";
 import React, { useState } from "react";
-import { publicUrl } from "../../../lib/common";
-import { useSettings } from "../../../lib/context/SettingContext";
-import { LoadingIcon } from "../../atoms/LoadingIcon";
 
 type Props = {
   setResult: (score: number) => void;
@@ -17,7 +17,7 @@ const Dice = ({ rolling, dice }: { rolling: boolean; dice: number }) => {
     >
       <div
         className="flex justify-center items-center border-collapse border border-slate-400 text-center"
-        style={{ height: "80%", aspectRatio: "1 / 1", fontSize: '8vh' }}
+        style={{ height: "80%", aspectRatio: "1 / 1", fontSize: "8vh" }}
       >
         {rolling ? <LoadingIcon /> : <span>{dice}</span>}
       </div>
@@ -34,7 +34,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
   const handleClick = () => {
     setRolling(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     makeSound("rolling");
 
     setTimeout(() => {
@@ -45,7 +45,7 @@ export const DicePlayground: React.FC<Props> = ({ setResult, changeSound }) => {
 
       setTimeout(() => {
         makeSound("finish");
-        document.body.style.overflow = 'visible';
+        document.body.style.overflow = "visible";
       }, 300);
     }, 2000);
   };

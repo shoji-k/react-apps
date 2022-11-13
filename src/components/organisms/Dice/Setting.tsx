@@ -1,9 +1,6 @@
+import { DiceSettings } from "components/organisms/Dice";
+import { useSettings, useUpdateSettings } from "lib/context/SettingContext";
 import React, { useState } from "react";
-import {
-  useSettings,
-  useUpdateSettings,
-} from "../../../lib/context/SettingContext";
-import { DiceSettings } from "../Dice";
 
 type FormProps = Pick<DiceSettings, "max">;
 

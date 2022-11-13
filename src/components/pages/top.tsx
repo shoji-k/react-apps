@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "../atoms/Link";
+import { Link } from "components/atoms/Link";
 
 export default function TopPage() {
   return (

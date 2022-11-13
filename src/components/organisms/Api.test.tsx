@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import axios from "axios";
-import client from "../../lib/client";
+import client from "lib/client";
 import { Api } from "./Api";
 
-jest.mock("../../lib/client");
+jest.mock("lib/client");
 const mockedClient = client as jest.Mocked<typeof axios>;
 
 test("render Api", async () => {

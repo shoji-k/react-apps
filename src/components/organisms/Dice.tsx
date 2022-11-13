@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   useSettings,
-  useUpdateSettings,
-} from "../../lib/context/SettingContext";
+  useUpdateSettings
+} from "lib/context/SettingContext";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { DiceCounter } from "./Dice/Counter";
 import { DiceHistory, Handler } from "./Dice/History";
 import { DicePlayground } from "./Dice/PlayGround";

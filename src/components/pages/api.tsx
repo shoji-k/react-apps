@@ -1,5 +1,5 @@
+import { Api } from "components/organisms/Api";
 import { useEffect } from "react";
-import { Api } from "../organisms/Api";
 
 export default function ApiPage() {
   useEffect(() => {
